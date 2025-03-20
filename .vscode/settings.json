@@ -2,5 +2,13 @@
     "files.associations": {
         "ostream": "cpp",
         "memory": "cpp"
-    }
+    },
+    "makefile.makefilePath": "C:\\Users\\tafoy\\OneDrive\\Desktop\\cs_136\\CS136P1\\CS136P1\\Makefile",
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\tafoy\\OneDrive\\Desktop\\cs_136\\CS136P1\\CS136P1\\build",
+            "binaryPath": "c:\\Users\\tafoy\\OneDrive\\Desktop\\cs_136\\CS136P1\\CS136P1\\build\\MatrixOperations",
+            "binaryArgs": []
+        }
+    ]
 }

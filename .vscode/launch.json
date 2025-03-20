@@ -1,31 +1,19 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "(Windows) Launch",
-            "type": "cppvsdbg",
+            "name": "Run MatrixOperations",
+            "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/biuld/debug/a.exe",
+            "program": "${workspaceFolder}/build/MatrixOperations.exe", // Or just MatrixOperations on macOS/Linux
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}",
             "environment": [],
-            "console": "externalTerminal"
-        },
-        {
-            "name": "(Windows) Launch",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "enter program name, for example ${workspaceFolder}/a.exe",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": "${fileDirname}",
-            "environment": [],
-            "console": "externalTerminal"
+            "externalConsole": true,
+            "MIMode": "gdb", // Or "lldb" on macOS, "cppvsdbg" on windows with visual studio.
+            "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe", // Or path to lldb, or leave blank for cppvsdbg.
+            "preLaunchTask": "make build"
         }
-
     ]
 }
