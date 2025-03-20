@@ -4,8 +4,7 @@
 #include <iostream>
 #include <memory>
 #include "Factory.h"
-#include "Matrix.h"
-#include "FMatrix.h"
+
 int main() {
 
 	std::unique_ptr<MatrixLib::Matrix> A(MatrixLib::Factory::getFMatrix(3,3));
