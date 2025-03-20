@@ -1,6 +1,6 @@
 #include "Factory.h"
 #include "FMatrix.h"
-#include "Matrix.h"
+
  namespace MatrixLib {
 	 Matrix* Factory::getFMatrix()
 	{

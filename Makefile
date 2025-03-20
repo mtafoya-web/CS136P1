@@ -15,7 +15,7 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRC_FILES))
 
 #executable
-EXECUTABLE = $(BUILD_DIR)/$(PROJECT_NAME)
+EXECUTABLE = $(PROJECT_NAME)
 
 #Default Target
 all: $(EXECUTABLE)

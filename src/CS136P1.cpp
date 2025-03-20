@@ -2,7 +2,6 @@
 //
 
 #include <iostream>
-#include <memory>
 #include "Factory.h"
 
 int main() {
