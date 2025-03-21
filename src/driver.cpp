@@ -6,7 +6,7 @@
 int printOptions()
 {
 	int choice = -1;
-	std::cout << "Welcome to the Matrix Library!" << std::endl;
+	std::cout << "\nWelcome to the Matrix Library!" << std::endl;
 	std::cout << "Please select an option:" << std::endl;
 	std::cout << "1. Add " << std::endl;
 	std::cout << "2. Subtract " << std::endl;
@@ -54,6 +54,7 @@ int main() {
 	std::unique_ptr<MatrixLib::Matrix> B(getMatrix("Matrix B"));
 	std::cout << B <<std::endl;
 	std::unique_ptr<MatrixLib::Matrix> C = (*A.get()) + B.get();
+	std::cout << C << std::endl;
 	
 	int endflag = -1;
 	while (endflag < 0)
@@ -61,7 +62,7 @@ int main() {
 		int choice = printOptions();
 		switch (choice) {
 			case 1:
-				std::cout << "Matrix A + Matrix B = " << C << std::endl;
+				std::cout << (*A.get() + B.get()) << std::endl;
 				break;
 			
 			case 2:
