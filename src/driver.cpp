@@ -3,6 +3,27 @@
 #include <iostream>
 #include "Factory.h"
 
+int printOptions()
+{
+	int choice = -1;
+	std::cout << "Welcome to the Matrix Library!" << std::endl;
+	std::cout << "Please select an option:" << std::endl;
+	std::cout << "1. Add " << std::endl;
+	std::cout << "2. Subtract " << std::endl;
+	std::cout << "3. Multiply " << std::endl;
+	std::cout << "4. Hadamard " << std::endl;
+	std::cout << "5. Exit " << std::endl;
+	std::cin >> choice;
+	while (std::cin.fail() || choice < 1 || choice > 5) {
+		std::cout << "Invalid input. Please enter a number between 1 and 5: " << std::endl;
+		std::cin.clear(); // clear the fail state
+		std::cin.ignore(); // ignore the rest of the line
+		std::cin >> choice;
+	}
+	return choice;
+}
+
+
 int positiveValidInt(std::string statement)
 {
 	int result = -1;
@@ -31,8 +52,33 @@ int main() {
 	std::unique_ptr<MatrixLib::Matrix> A(getMatrix("Matrix A"));
 	std::cout << A <<std::endl;
 	std::unique_ptr<MatrixLib::Matrix> B(getMatrix("Matrix B"));
+	std::cout << B <<std::endl;
 	std::unique_ptr<MatrixLib::Matrix> C = (*A.get()) + B.get();
-	std::cout << C <<std::endl;
+	
+	int endflag = -1;
+	while (endflag < 0)
+	{
+		int choice = printOptions();
+		switch (choice) {
+			case 1:
+				std::cout << "Matrix A + Matrix B = " << C << std::endl;
+				break;
+			
+			case 2:
+				break;
+			
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				std::cout << "Exiting the program." << std::endl;
+				endflag = 1;
+				break;
+			}
+	}
+
+
 	return 0;
 }
 
