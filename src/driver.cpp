@@ -44,7 +44,7 @@ MatrixLib::Matrix* getMatrix(std::string statement)
 	int rows, cols;
 	rows = positiveValidInt("Please Enter the number of rows: ");
 	cols = positiveValidInt("Please Enter the number of columns: ");
-	return MatrixLib::Factory::getFMatrix(rows, cols);
+	return MatrixLib::Factory::getPMatrix(rows, cols);
 }
 
 int main() {
@@ -62,7 +62,7 @@ int main() {
 		int choice = printOptions();
 		switch (choice) {
 			case 1:
-				std::cout << (*A.get() + B.get()) << std::endl;
+				std::cout <<"Matrix A + Matrix B\n" << C << std::endl;
 				break;
 			
 			case 2:
