@@ -65,4 +65,4 @@ namespace MatrixLib {
 
     };
 }
-#endif /* Matrix_hpp */
+#endif /* Matrix_h */
