@@ -13,6 +13,7 @@ namespace MatrixLib{
         //Allows access from Factory class
         friend class Factory;
 
+
     private:
 
     protected:
@@ -21,6 +22,7 @@ namespace MatrixLib{
         PMatrix(int row, int columns);
 
     public:
+
         //METHODS to be implemented using pointers
         std::unique_ptr<Matrix> operator+(const Matrix* other) const override;
         std::unique_ptr<Matrix> operator+(const Matrix& other) const override;
@@ -38,3 +40,4 @@ namespace MatrixLib{
     };
 }
 #endif /* PMatrix_h */
+
