@@ -66,11 +66,14 @@ int main() {
 				break;
 			
 			case 2:
+				std::cout << (*A.get() - B.get()) << std::endl;
 				break;
 			
 			case 3:
+				std::cout << (*A.get() * B.get()) << std::endl;
 				break;
 			case 4:
+				std::cout << (A->hadamard(B.get())) << std::endl;
 				break;
 			case 5:
 				std::cout << "Exiting the program." << std::endl;
