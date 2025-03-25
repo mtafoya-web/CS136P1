@@ -5,15 +5,11 @@
 
 #include <stdio.h>
 #include <iostream>
-#include <memory>
 namespace MatrixLib {
 
     class Matrix {
     private:
         int** getRand2DArray(int rs, int cs);
-
-        // Destructor
-
 
 
     protected:
@@ -23,8 +19,6 @@ namespace MatrixLib {
         Matrix(int r, int c);
         //std::array<std::array<int, Cols>, Rows> generateArrayOfArrays();
         Matrix(int** input, int r, int c);
-
-
 
 
     public:
@@ -45,24 +39,23 @@ namespace MatrixLib {
         }
 
 
-
-
         virtual std::unique_ptr<Matrix> hadamard(const Matrix& input) const = 0;
         virtual std::unique_ptr<Matrix> operator+(const Matrix& other) const = 0;
         virtual std::unique_ptr<Matrix> operator-(const Matrix& other) const = 0;
-
         virtual std::unique_ptr<Matrix> operator+(const Matrix* other) const = 0;
         virtual std::unique_ptr<Matrix> operator-(const Matrix* other) const = 0;
         virtual std::unique_ptr<Matrix> hadamard(const Matrix* input) const = 0;
         virtual std::unique_ptr<Matrix> operator*(const Matrix* other) const = 0;
+
         virtual bool operator==(const Matrix* other) const = 0;
+        virtual bool operator==(const Matrix& other) const = 0;
+
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
         friend std::ostream& operator<<(std::ostream& os, const Matrix* matrix);
-        virtual bool operator==(const Matrix& other) const = 0;
 
         friend class Factory;
 
 
     };
 }
-#endif /* Matrix_h */
+#endif /* Matrix_hpp */
