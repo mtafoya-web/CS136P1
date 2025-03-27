@@ -2,7 +2,6 @@
 //
 #include <iostream>
 #include "Factory.h"
-#include "Pmatrix.h"
 
 int printOptions()
 {
@@ -17,8 +16,8 @@ int printOptions()
 	std::cin >> choice;
 	while (std::cin.fail() || choice < 1 || choice > 5) {
 		std::cout << "Invalid input. Please enter a number between 1 and 5: " << std::endl;
-		std::cin.clear(); 
-		std::cin.ignore(); 
+		std::cin.clear(); // clear the fail state
+		std::cin.ignore(); // ignore the rest of the line
 		std::cin >> choice;
 	}
 	return choice;
@@ -31,9 +30,9 @@ int positiveValidInt(std::string statement)
 	std::cout << statement;
 	std::cin >> result;
 	while (std::cin.fail() || result <= 0) {
-		std::cout << "Invalid input. Please enter a positive integer: " << std::endl;
-		std::cin.clear(); 
-		std::cin.ignore(); 
+		std::cout << "Invalid input. Please enter a positive integer: "<< std::endl;
+		std::cin.clear(); // clear the fail state
+		std::cin.ignore(); // ignore the rest of the line
 		std::cin >> result;
 	}
 	return result;
@@ -45,44 +44,45 @@ MatrixLib::Matrix* getMatrix(std::string statement)
 	int rows, cols;
 	rows = positiveValidInt("Please Enter the number of rows: ");
 	cols = positiveValidInt("Please Enter the number of columns: ");
-	return MatrixLib::Factory::getFMatrix(rows, cols);
+	return MatrixLib::Factory::getPMatrix(rows, cols);
 }
 
 int main() {
 
 	std::unique_ptr<MatrixLib::Matrix> A(getMatrix("Matrix A"));
-	std::cout << *A << std::endl;
+	std::cout << A <<std::endl;
 	std::unique_ptr<MatrixLib::Matrix> B(getMatrix("Matrix B"));
-	std::cout << *B << std::endl;
+	std::cout << B <<std::endl;
 	std::unique_ptr<MatrixLib::Matrix> C = (*A.get()) + B.get();
-	std::cout << *C << std::endl;
-
+	std::cout << C << std::endl;
+	
 	int endflag = -1;
 	while (endflag < 0)
 	{
 		int choice = printOptions();
 		switch (choice) {
-		case 1:
-			std::cout << *(*A.get() + B.get()) << std::endl;
-			break;
-
-		case 2:
-			std::cout << (*A.get() - B.get()) << std::endl;
-			break;
-
-		case 3:
-			std::cout << (*A.get() * B.get()) << std::endl;
-			break;
-		case 4:
-			std::cout << (A->hadamard(B.get())) << std::endl;
-			break;
-		case 5:
-			std::cout << "Exiting the program." << std::endl;
-			endflag = 1;
-			break;
-		}
+			case 1:
+				std::cout <<"Matrix A + Matrix B\n" << C << std::endl;
+				break;
+			
+			case 2:
+				std::cout << (*A.get() - B.get()) << std::endl;
+				break;
+			
+			case 3:
+				std::cout << (*A.get() * B.get()) << std::endl;
+				break;
+			case 4:
+				std::cout << (A->hadamard(B.get())) << std::endl;
+				break;
+			case 5:
+				std::cout << "Exiting the program." << std::endl;
+				endflag = 1;
+				break;
+			}
 	}
 
 
 	return 0;
 }
+

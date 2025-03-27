@@ -14,6 +14,8 @@ namespace MatrixLib
         friend class Factory;  
 
     private:
+        // private constructor used by Factory
+        PMatrix(int** input, int row, int columns);
 
     protected:
         PMatrix(int** input, int row, int columns);
@@ -21,6 +23,8 @@ namespace MatrixLib
         PMatrix(int row, int columns);
 
     public:
+        ~PMatrix() override; // ensure a virtual destructor
+
         std::unique_ptr<Matrix> operator+(const Matrix& other) const override;
         std::unique_ptr<Matrix> operator+(const Matrix* other) const override;
         std::unique_ptr<Matrix> operator-(const Matrix& other) const override;
@@ -30,6 +34,7 @@ namespace MatrixLib
         std::unique_ptr<Matrix> operator*(const Matrix* other) const override;
         bool operator==(const Matrix* other) const override;
         bool operator==(const Matrix& other) const override;
+
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
         friend std::ostream& operator<<(std::ostream& os, const Matrix* matrix);
     };
