@@ -24,10 +24,13 @@ namespace MatrixLib {
     public:
 
 
-        int   const rows;
-        int   const columns;
-        int** const elements;
+        int rows; // removed 'const' to allow reassignments
+        int columns; // removed 'const'
+        int** elements; // removed 'const'
         virtual ~Matrix();
+
+        // copy assignment operator
+        Matrix& operator=(const Matrix& other);
 
         // Utility methods
         static bool equalDim(const Matrix& m1, const Matrix& m2) {

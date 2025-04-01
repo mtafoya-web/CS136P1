@@ -20,6 +20,32 @@ namespace MatrixLib {
         return randArray;
     }
 
+    // copy assignment operator 
+    Matrix& Matrix::operator = (const Matrix & other){
+    if (this == &other) {
+        return *this; // handle self-assignment
+    }
+
+    // free existing memory
+    for (int i = 0; i < rows; i++) {
+        delete[] elements[i];
+    }
+    delete[] elements;
+
+    // copy dimensions
+    rows = other.rows;
+    columns = other.columns;
+
+    // allocate new memory + copy elements
+    elements = new int* [rows];
+    for (int i = 0; i < rows; i++) {
+        elements[i] = new int[columns];
+        for (int j = 0; j < columns; j++) {
+            elements[i][j] = other.elements[i][j];
+        }
+    }
+    return *this;
+}
 
 
     // Constructors
