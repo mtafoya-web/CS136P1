@@ -53,8 +53,7 @@ int main() {
 	std::cout << A <<std::endl;
 	std::unique_ptr<MatrixLib::Matrix> B(getMatrix("Matrix B"));
 	std::cout << B <<std::endl;
-	std::unique_ptr<MatrixLib::Matrix> C = (*A.get()) + B.get();
-	std::cout << C << std::endl;
+	
 	
 	int endflag = -1;
 	while (endflag < 0)
@@ -62,11 +61,11 @@ int main() {
 		int choice = printOptions();
 		switch (choice) {
 			case 1:
-				std::cout <<"Matrix A + Matrix B\n" << C << std::endl;
+				std::cout <<"Matrix A + Matrix B\n" << (*A.get()) + B.get() << std::endl;
 				break;
 			
 			case 2:
-				std::cout << (*A.get() - B.get()) << std::endl;
+				std::cout << ((*A.get()) - B.get()) << std::endl;
 				break;
 			
 			case 3:

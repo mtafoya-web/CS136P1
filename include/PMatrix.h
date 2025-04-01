@@ -15,7 +15,7 @@ namespace MatrixLib
 
     private:
         // private constructor used by Factory
-        PMatrix(int** input, int row, int columns);
+        
 
     protected:
         PMatrix(int** input, int row, int columns);
