@@ -6,6 +6,7 @@
 #include <iomanip>
 
 
+
 namespace MatrixLib {
 
     int** Matrix::getRand2DArray(int rs, int cs)
@@ -19,8 +20,6 @@ namespace MatrixLib {
             });
         return randArray;
     }
-
-
 
     // Constructors
     Matrix::Matrix() : Matrix(2, 2) {}

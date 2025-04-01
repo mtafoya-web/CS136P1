@@ -3,17 +3,14 @@
 #ifndef Matrix_h
 #define Matrix_h
 
+#include <memory>
 #include <stdio.h>
 #include <iostream>
-#include <memory>
 namespace MatrixLib {
 
     class Matrix {
     private:
         int** getRand2DArray(int rs, int cs);
-
-        // Destructor
-
 
 
     protected:
@@ -25,14 +22,12 @@ namespace MatrixLib {
         Matrix(int** input, int r, int c);
 
 
-
-
     public:
 
 
-        int   const rows;
-        int   const columns;
-        int** const elements;
+        int const rows; // removed 'const' to allow reassignments
+        int const columns; // removed 'const'
+        int** const elements; // removed 'const'
         virtual ~Matrix();
 
         // Utility methods
@@ -45,24 +40,23 @@ namespace MatrixLib {
         }
 
 
-
-
         virtual std::unique_ptr<Matrix> hadamard(const Matrix& input) const = 0;
         virtual std::unique_ptr<Matrix> operator+(const Matrix& other) const = 0;
         virtual std::unique_ptr<Matrix> operator-(const Matrix& other) const = 0;
-
         virtual std::unique_ptr<Matrix> operator+(const Matrix* other) const = 0;
         virtual std::unique_ptr<Matrix> operator-(const Matrix* other) const = 0;
         virtual std::unique_ptr<Matrix> hadamard(const Matrix* input) const = 0;
         virtual std::unique_ptr<Matrix> operator*(const Matrix* other) const = 0;
+
         virtual bool operator==(const Matrix* other) const = 0;
+        virtual bool operator==(const Matrix& other) const = 0;
+
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
         friend std::ostream& operator<<(std::ostream& os, const Matrix* matrix);
-        virtual bool operator==(const Matrix& other) const = 0;
 
         friend class Factory;
 
 
     };
 }
-#endif /* Matrix_h */
+#endif /* Matrix_hpp */

@@ -12,10 +12,11 @@ int printOptions()
 	std::cout << "2. Subtract " << std::endl;
 	std::cout << "3. Multiply " << std::endl;
 	std::cout << "4. Hadamard " << std::endl;
-	std::cout << "5. Exit " << std::endl;
+	std::cout << "5. clone" << std::endl;
+	std::cout << "6. Exit " << std::endl;
 	std::cin >> choice;
-	while (std::cin.fail() || choice < 1 || choice > 5) {
-		std::cout << "Invalid input. Please enter a number between 1 and 5: " << std::endl;
+	while (std::cin.fail() || choice < 1 || choice > 6) {
+		std::cout << "Invalid input. Please enter a number between 1 and 6: " << std::endl;
 		std::cin.clear(); // clear the fail state
 		std::cin.ignore(); // ignore the rest of the line
 		std::cin >> choice;
@@ -53,8 +54,7 @@ int main() {
 	std::cout << A <<std::endl;
 	std::unique_ptr<MatrixLib::Matrix> B(getMatrix("Matrix B"));
 	std::cout << B <<std::endl;
-	std::unique_ptr<MatrixLib::Matrix> C = (*A.get()) + B.get();
-	std::cout << C << std::endl;
+	
 	
 	int endflag = -1;
 	while (endflag < 0)
@@ -62,17 +62,22 @@ int main() {
 		int choice = printOptions();
 		switch (choice) {
 			case 1:
-				std::cout <<"Matrix A + Matrix B\n" << C << std::endl;
+				std::cout <<"Matrix A + Matrix B\n" << (*A.get()) + B.get() << std::endl;
 				break;
 			
 			case 2:
+				std::cout <<"Matrix A - Matrix B\n" << ((*A.get()) - B.get()) << std::endl;
 				break;
 			
 			case 3:
+				std::cout <<"Matrix A * Matrix B\n" <<(*A.get() * B.get()) << std::endl;
 				break;
 			case 4:
+				std::cout <<"hadamard(Matrix A * Matrix B)\n" << (A->hadamard(B.get())) << std::endl;
 				break;
 			case 5:
+				break;
+			case 6:
 				std::cout << "Exiting the program." << std::endl;
 				endflag = 1;
 				break;
