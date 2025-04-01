@@ -25,9 +25,9 @@ namespace MatrixLib {
     public:
 
 
-        int const rows; // removed 'const' to allow reassignments
-        int const columns; // removed 'const'
-        int** const elements; // removed 'const'
+        int const rows; 
+        int const columns; 
+        int** const elements; 
         virtual ~Matrix();
 
         // Utility methods
@@ -59,4 +59,4 @@ namespace MatrixLib {
 
     };
 }
-#endif /* Matrix_hpp */
+#endif /* Matrix_h */
