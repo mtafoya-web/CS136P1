@@ -31,6 +31,7 @@ namespace MatrixLib{
         std::unique_ptr<Matrix> operator*(const Matrix* other) const override;
         bool operator==(const Matrix* other) const override;
         bool operator==(const Matrix& other) const override;
+        std::unique_ptr<Matrix> operator=(const Matrix& other) const override;
 
         //Allows for formatted output
         friend std::ostream& operator<<(std::ostream& os, const Matrix* other);
