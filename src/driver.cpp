@@ -55,13 +55,14 @@ int main() {
 	std::unique_ptr<MatrixLib::Matrix> B(getMatrix("Matrix B"));
 	std::cout << B <<std::endl;
 	
-	
+	std::unique_ptr<MatrixLib::Matrix> D = std::move(A);
 	int endflag = -1;
 	while (endflag < 0)
 	{
 		int choice = printOptions();
 		switch (choice) {
 			case 1:
+				//check for dimensions
 				std::cout <<"Matrix A + Matrix B\n" << (*A.get()) + B.get() << std::endl;
 				break;
 			
@@ -76,6 +77,8 @@ int main() {
 				std::cout <<"hadamard(Matrix A * Matrix B)\n" << (A->hadamard(B.get())) << std::endl;
 				break;
 			case 5:
+				std::cout<<"Assignment: \n"<<  D <<std::endl; 
+				A  = std::move(D);
 				break;
 			case 6:
 				std::cout << "Exiting the program." << std::endl;
