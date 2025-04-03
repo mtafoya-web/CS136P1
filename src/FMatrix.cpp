@@ -133,6 +133,30 @@ namespace MatrixLib {
         return mismatchIter.first == elements + rows;
     }
 
+    std::unique_ptr<Matrix> FMatrix::operator=(const Matrix &other) const
+    {
+        if(this != &other){
+            //Deallocate memory
+            for(int i = 0; i< rows; i++){
+                delete[] this->elements[i];
+            }
+            delete[] this->elements;
 
+            
+            int new_rows = other.rows;
+            int new_cols = other.columns;
+            int **copy = new int*[new_rows];
+            for(int i = 0; i<new_rows; i++){
+                copy[i] = new int[new_cols];
+            }
 
+            for(int i = 0; i<new_rows; i++){
+                for(int j = 0; j<new_cols; j++){
+                    copy[i][j] = other.elements[i][j];
+                }
+            }
+            return std::unique_ptr<Matrix>(new FMatrix(copy, new_rows, new_cols));
+        }   
+        return std::unique_ptr<Matrix>(new FMatrix(other.elements, other.rows, other.columns));
+    }
 }
