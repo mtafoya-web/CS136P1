@@ -8,7 +8,7 @@ OBJ_DIR = $(BUILD_DIR)/obj
 
 #Compiler and Flags
 CXX = g++
-CXXFLAGS = -std=c++20 -Wall -Werror -I$(INCLUDE_DIR)
+CXXFLAGS = -std=c++20 -Wall -Werror -I$(INCLUDE_DIR) -g
 
 #Source Files
 SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
