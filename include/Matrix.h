@@ -47,11 +47,11 @@ namespace MatrixLib {
         virtual std::unique_ptr<Matrix> operator-(const Matrix* other) const = 0;
         virtual std::unique_ptr<Matrix> hadamard(const Matrix* input) const = 0;
         virtual std::unique_ptr<Matrix> operator*(const Matrix* other) const = 0;
+        virtual std::unique_ptr<Matrix> operator=(const Matrix& other) const = 0;
 
         virtual bool operator==(const Matrix* other) const = 0;
         virtual bool operator==(const Matrix& other) const = 0;
 
-        virtual std::unique_ptr<Matrix> operator =(const Matrix& other) const = 0;
 
         friend std::ostream& operator<<(std::ostream& os, const Matrix& matrix);
         friend std::ostream& operator<<(std::ostream& os, const Matrix* matrix);
