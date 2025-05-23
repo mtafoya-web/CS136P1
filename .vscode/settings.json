@@ -67,7 +67,10 @@
         "string_view": "cpp",
         "numbers": "cpp",
         "span": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "list": "cpp",
+        "queue": "cpp",
+        "xhash": "cpp"
     },
     "makefile.makefilePath": "C:\\Users\\tafoy\\OneDrive\\Desktop\\cs_136\\CS136P1\\CS136P1\\Makefile",
     "makefile.launchConfigurations": [

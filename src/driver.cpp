@@ -49,14 +49,33 @@ bool validDimensions(const std::unique_ptr<MatrixLib::Matrix>& a, const std::uni
     if (a->rows == b->rows && a->columns == b->columns) {
         return true;
     }
-    throw std::invalid_argument("Matrix rows and columns have to be the same");
+    std::cout<< "Matrix rows and columns have to be the same"<<std::endl;
+    return false;
 }
 
 bool validMultDim(const std::unique_ptr<MatrixLib::Matrix>& a, const std::unique_ptr<MatrixLib::Matrix>& b) {
     if (a->columns == b->rows) {
         return true;
     }
-    throw std::invalid_argument("The number of columns in Matrix A must equal the number of rows in Matrix B");
+    std::cout<<"The number of columns in Matrix A must equal the number of rows in Matrix B"<<std::endl;
+    return false;
+}
+
+//won't return until you actually input the right values for A and B
+void recursiveCheck(std::unique_ptr<MatrixLib::Matrix> & A, std::unique_ptr<MatrixLib::Matrix> & B){
+    bool check = validDimensions(A, B);
+    if(check == true){
+        return;
+    }
+
+    std::cerr << "Error: "<< std::endl;
+    std::cout << "Resetting the Matrices\n";
+    A.reset(getMatrix("Matrix A"));
+    std::cout << A << std::endl;
+    B.reset(getMatrix("Matrix B"));
+    std::cout << B << std::endl;
+    return recursiveCheck(A, B);
+    
 }
 
 int main() {
@@ -78,60 +97,22 @@ int main() {
             std::cout << B << std::endl;
             break;
         case 1:
-            try {
-                if (validDimensions(A, B)) {
-                    std::cout << "Matrix A + Matrix B\n" << (*A.get()) + B.get() << std::endl;
-                }
-            } catch (const std::invalid_argument& e) {
-                std::cerr << "Error: " << e.what() << std::endl;
-                std::cout << "Resetting the Matrices\n";
-                A.reset(getMatrix("Matrix A"));
-                std::cout << A << std::endl;
-                B.reset(getMatrix("Matrix B"));
-                std::cout << B << std::endl;
-            }
+        //Wrap into a function
+            recursiveCheck(A, B);
+            std::cout << "Matrix A + Matrix B\n" << (*A.get()) + B.get() << std::endl;
             break;
         case 2:
-            try {
-                if (validDimensions(A, B)) {
-                    std::cout << "Matrix A - Matrix B\n" << ((*A.get()) - B.get()) << std::endl;
-                }
-            } catch (const std::invalid_argument& e) {
-                std::cerr << "Error: " << e.what() << std::endl;
-                std::cout << "Resetting the Matrices\n";
-                A.reset(getMatrix("Matrix A"));
-                std::cout << A << std::endl;
-                B.reset(getMatrix("Matrix B"));
-                std::cout << B << std::endl;
-            }
+            recursiveCheck(A, B);
+            std::cout << "Matrix A - Matrix B\n" << ((*A.get()) - B.get()) << std::endl;
+            
             break;
         case 3:
-            try {
-                if (validMultDim(A, B)) {
-                    std::cout << "Matrix A * Matrix B\n" << (*A.get() * B.get()) << std::endl;
-                }
-            } catch (const std::invalid_argument& e) {
-                std::cerr << "Error: " << e.what() << std::endl;
-                std::cout << "Resetting the Matrices\n";
-                A.reset(getMatrix("Matrix A"));
-                std::cout << A << std::endl;
-                B.reset(getMatrix("Matrix B"));
-                std::cout << B << std::endl;
-            }
-            break;
+            recursiveCheck(A, B);
+            std::cout << "Matrix A * Matrix B\n" << (*A.get() * B.get()) << std::endl;
+            
         case 4:
-            try {
-                if (validDimensions(A, B)) {
-                    std::cout << "hadamard(Matrix A * Matrix B)\n" << (A->hadamard(B.get())) << std::endl;
-                }
-            } catch (const std::invalid_argument& e) {
-                std::cerr << "Error: " << e.what() << std::endl;
-                std::cout << "Resetting the Matrices\n";
-                A.reset(getMatrix("Matrix A"));
-                std::cout << A << std::endl;
-                B.reset(getMatrix("Matrix B"));
-                std::cout << B << std::endl;
-            }
+            recursiveCheck(A, B);
+            std::cout << "hadamard(Matrix A * Matrix B)\n" << (A->hadamard(B.get())) << std::endl;
             break;
         case 5:
             D = std::move(A);
