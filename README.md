@@ -1,7 +1,7 @@
-C++ Matrix Operations Library
+# C++ Matrix Operations Library
 A comprehensive command-line application written in C++ that demonstrates various matrix operations. This project showcases different implementation strategies, including procedural-style programming and modern functional approaches using the C++ Standard Library.
 
-Overview
+## Overview
 This library provides an interactive console interface for users to create and manipulate matrices. Users can perform standard mathematical operations such as addition, subtraction, multiplication, and Hadamard products.
 
 A key feature of this project is the demonstration of two distinct implementation philosophies:
@@ -10,7 +10,7 @@ PMatrix (Procedural Matrix): Implements matrix operations using traditional nest
 FMatrix (Functional Matrix): Implements the same operations using modern C++ STL algorithms like std::transform and std::inner_product.
 The project leverages the Factory design pattern to decouple the client application from the concrete matrix implementations.
 
-Key Features
+## Key Features
 Interactive Command-Line Interface: A user-friendly menu to select matrix operations.
 Multiple Matrix Operations:
 Addition (+)
@@ -36,8 +36,8 @@ Project Structure
 ├── FMatrix.cpp        // Functional implementation of matrix operations
 ├── FMatrix.h          // Header for the FMatrix class
 └── ...
-How to Build and Run
-Prerequisites
+## How to Build and Run
+###Prerequisites
 A C++ compiler that supports C++17 or later (e.g., g++, Clang, MSVC).
 Compilation
 Navigate to the project's root directory in your terminal.
@@ -64,7 +64,7 @@ Bash
 matrix_app.exe
 Follow the on-screen prompts to create two random matrices (A and B) and select an operation to perform.
 
-Code Design Highlights
+## Code Design Highlights
 Factory Pattern
 The Factory class is used to create matrix objects. This decouples the driver.cpp from the specific PMatrix or FMatrix classes. If a new matrix type (e.g., SparseMatrix) were added, the main application logic would not need to be changed.
 
