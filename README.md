@@ -24,18 +24,7 @@ Smart Pointers: Utilizes std::unique_ptr for robust, exception-safe memory manag
 STL Algorithms: Leverages the power of the Standard Template Library for concise and efficient matrix manipulations in FMatrix.
 Robust Input Validation: Ensures that user input for matrix dimensions is valid and that matrix dimensions are compatible for the selected operation.
 Operator Overloading: All mathematical operations are implemented using intuitive operator overloading.
-Project Structure
-.
-├── driver.cpp         // Main application driver, handles user interaction
-├── Factory.cpp        // Implementation of the Factory for creating matrices
-├── Factory.h          // Header for the Factory class
-├── Matrix.cpp         // Implementation of the abstract base Matrix class
-├── Matrix.h           // Header for the base Matrix class
-├── PMatrix.cpp        // Procedural implementation of matrix operations
-├── PMatrix.h          // Header for the PMatrix class
-├── FMatrix.cpp        // Functional implementation of matrix operations
-├── FMatrix.h          // Header for the FMatrix class
-└── ...
+
 ## How to Build and Run
 ###Prerequisites
 A C++ compiler that supports C++17 or later (e.g., g++, Clang, MSVC).
